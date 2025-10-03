@@ -1,0 +1,1 @@
+IndiceMasaCorporal es una aplicación de consola que calcula el IMC y da su estado Nutricional
