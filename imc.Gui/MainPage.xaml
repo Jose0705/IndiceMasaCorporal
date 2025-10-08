@@ -65,18 +65,18 @@
                     <Label
                     FontSize="Small"
                     Text="El indice de masa corporal de la persona es de : "/>
-                    
+
                     <Label
                     FontSize="Medium"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     Text="24.1234"
                         x:Name="ImcLabel"/>
-                    
+
                     <Label
                     FontSize="Small"
                     Text="La situacion nutricional de la person es de : "/>
-                   
+
                     <Label
                     FontSize="Medium"
                     FontAttributes="Bold"
