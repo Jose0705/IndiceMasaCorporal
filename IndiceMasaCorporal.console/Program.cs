@@ -1,57 +1,41 @@
-﻿using System;
-// NOMBRE :  JOSE LUIS FLORES SAUCEDO MS3
+﻿using Imc.Model;
+using System;
+
+// NOMBRE : JOSE LUIS FLORES SAUCEDO MS3
 public class IMC
 {
-    //DATOS DE ENTRA
-    double Peso = 0;
-    double Estatura = 0;
-    double Imc = 0;
+    // DATOS DE ENTRADA
+    decimal Peso = 0;
+    decimal Estatura = 0;
+    decimal Imc = 0;
+
     public void Indicedemasa()
     {
         // DATOS QUE SE LE PIDEN AL CLIENTE PARA CALCULAR EL IMC
-        Console.WriteLine("Ingrese su peso : ");
-        Peso = double.Parse(Console.ReadLine());
-        Console.WriteLine("Ingrese su estatura : ");
-        Estatura = double.Parse(Console.ReadLine());
-        // CALCULO DEL IMC (INDICE DE MASA CORPORAL)
-        Imc = (Peso / (Estatura * Estatura));
+        Console.WriteLine("Ingrese su peso (kg): ");
+        Peso = decimal.Parse(Console.ReadLine());
+        Console.WriteLine("Ingrese su estatura (m): ");
+        Estatura = decimal.Parse(Console.ReadLine());
+
+        // CÁLCULO DEL IMC
+        Imc = IndiceDeMasaCorporalLib.IndiceDeMasaCorporal(Peso, Estatura);
+
+        // MUESTRA EL RESULTADO
+        Console.WriteLine($"\nSu índice de masa corporal es: {Imc:F2}");
+        IndiceDeMasaCorporalLib.DeterminaEstadoNutricional(Imc);
     }
-    public void Masa()
-    {
-        //SE MANDA A IMPRIMIR EL IMC
-        Console.WriteLine("Su IMC es " + Imc);
-    }
-    public void Condiciones() {
-        // SE REALIZA CADA CONDICION SI IMC ES MENOR QUE 18.5 Y ASI DE MANERA QUE CUMPLA CON LOS PARAMETROS
-        if (Imc < 18.5)
-        {
-            Console.WriteLine("Su clasificacion de su estado nutricional es Bajo");
-        }
-        else if (Imc >= 18.5 && Imc < 25)
-        {
-            Console.WriteLine("Su clasificacion de su estado nutricional es Normal");
-        }
-        else if (Imc >= 25 && Imc < 30)
-        {
-            Console.WriteLine("Su clasificacion de su estado nutricional es Sobrepeso");
-        }
-        else if (Imc >= 30 && Imc < 40)
-        {
-            Console.WriteLine("Su clasificacion de su estado nutricional es Obesidad");
-        }
-        else if (Imc >= 40)
-        {
-            Console.WriteLine("Su clasificacion de su estado nutricional es Obesidad Extrema");
-        }
-    }
+
     // MAIN PRINCIPAL
     public static void Main(string[] args)
     {
-        // SE CREA UN METODO LLAMADO PACIENTE
+        // SE CREA UN OBJETO DE LA CLASE IMC
         IMC paciente = new IMC();
-        // SE LLAMAN LOS METOS DE MANERA QUE CUMPLA CON LOS REQUISISTOS
+
+        // SE LLAMA AL MÉTODO PARA CALCULAR EL IMC
         paciente.Indicedemasa();
-        paciente.Masa();
-        paciente.Condiciones();
+
+        // ESPERA UNA TECLA PARA SALIR
+        Console.WriteLine("\nPresione una tecla para salir...");
+        Console.ReadKey();
     }
 }
